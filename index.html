@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Chat</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="script.js"></script>
+  </head>
+  <body onload="poNacteni()">
+    <h1>Chat</h1>
+
+    <div id="oblast_registrace">
+      <h2>Registrace</h2>
+
+        <table>
+          <tr>
+            <td>Celé jméno:</td>
+            <td><input type="text" id="fullname"></td>
+          </tr>
+          <tr>
+            <td>Přihlašovací jméno:</td>
+            <td><input type="text" id="username"></td>
+          </tr>
+          <tr>
+            <td>Heslo:</td>
+            <td><input type="password" id="password"></td>
+          </tr>
+          <tr>
+            <td>E-mail:</td>
+            <td><input type="text" id="email"></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center"><button onclick="registruj()">Registruj</button></td>
+          </tr>  
+       </table>
+    
+    </div>
+
+    <div id="oblast_prihlaseni">
+      <h2>Přihlášení</h2>
+
+        <table>
+          <tr>
+            <td>Přihlašovací jméno:</td>
+            <td><input type="text" id="loginusername"></td>
+          </tr>
+          <tr>
+            <td>Heslo:</td>
+            <td><input type="password" id="loginpassword"></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center">
+              <button onclick="prihlas()">Přihlaš se</button>
+              <button onclick="ukazRegistraci()">Registrace...</button>
+            </td>
+          </tr>  
+       </table>
+    
+    </div>
+
+    <div id="oblast_chat">
+
+    <table>
+      <tr>
+        <td>Zpráva:</td>
+        <td><input type="text" id="zprava"></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center"><button onclick="odesliZPravu()">Odešli</button></td>
+      </tr>  
+    </table>
+
+    <div id="seznamZprav">...</div>
+
+  </div>
+
+  </body>
+</html>
