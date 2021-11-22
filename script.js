@@ -50,8 +50,8 @@ function ukazChat() {
   document.getElementById("oblast_registrace").style.display = "none";
   document.getElementById("oblast_prihlaseni").style.display = "none";
   document.getElementById("oblast_chat").style.display = "block";
-
-  setInterval(obnovZpravy, 1000);
+ 
+  casovac = setInterval(obnovZpravy, 1000);
 }
 
 async function registruj() {
@@ -76,6 +76,7 @@ async function registruj() {
 }
 
 let token;
+let casovac;
 
 async function prihlas() {
   let un = document.getElementById("loginusername").value;
@@ -91,6 +92,24 @@ async function prihlas() {
   if (data.status == "OK") {
     token = data.token;
     ukazChat();
+  } else {
+    alert(data.error);
+  }
+}
+
+async function odhlas() {
+  if (!confirm("Fakt odhlasit?!")) return; //pri stornu vyskoci z funkce
+
+  let url = "https://nodejs-3260.rostiapp.cz/users/logout";
+  let body = {};
+  body.token = token;
+  let odpoved = await fetch(url, {method:"POST", body:JSON.stringify(body)});
+  let data = await odpoved.json();
+  
+  if (data.status == "OK") {
+    clearInterval(casovac); //vypnuti obnovovani seznamu zprav
+    token = undefined;
+    ukazPrihlaseni();
   } else {
     alert(data.error);
   }
