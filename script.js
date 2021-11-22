@@ -91,6 +91,8 @@ async function prihlas() {
   
   if (data.status == "OK") {
     token = data.token;
+    document.getElementById("loginusername").value = "";
+    document.getElementById("loginpassword").value = "";
     ukazChat();
   } else {
     alert(data.error);
